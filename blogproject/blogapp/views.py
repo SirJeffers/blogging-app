@@ -20,7 +20,7 @@ def postview(request, post_id):
     return render(request, 'blog/post.html', {'post' : post})
 
 #createpost function: has two states, a POST and GET state
-# the POST state will go through the data recieved and put together a blog 'post' object
+# the POST state will go through the data recieved and put together a blog 'post' object. the recieving time is used as the creation date
 # it will then redirect the user to the detail page for the newly created post
 # 
 # the GET state will get all the authors so that they can be used to create a list 
@@ -40,7 +40,7 @@ def createPost(request):
 
 #editPost function: like the previous function it has a POST and GET state
 # the POST state will go through the data recieved and put together a blog 'post' object
-# it will then redirect the user to the detail page for the edited post
+# it will then redirect the user to the detail page for the edited post. the recieving time is used as the edit date/ new creation date
 # 
 # the GET state will get all the authors so that they can be used to create a list
 # in addition it will also pass along the specifc post to pre-fill out the forms
