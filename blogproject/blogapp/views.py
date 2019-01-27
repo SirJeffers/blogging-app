@@ -10,7 +10,8 @@ from .models import Post, Author
 #the index function: gets a list of all the blogs, then returns that to the page
 def index(request):
     all_blogs = Post.objects.all()
-    return render(request, 'blog/index.html', {'blog_list' : all_blogs})
+    authors = Author.objects.all()
+    return render(request, 'blog/index.html', {'blog_list' : all_blogs, 'authors' : authors})
 
 #postview function: returns the data for a specific post when accessed
 #gets the specific post based off the id
@@ -57,3 +58,8 @@ def editPost(request, post_id):
         post = get_object_or_404(Post, pk=post_id)
         author = Author.objects.all()
         return render(request, 'blog/edit.html', {'post' : post, 'author' : author})
+
+#allows viewing of the authors info page, specific to that author
+def authInfo(request, auth_id):
+    author = get_object_or_404(Author, pk=auth_id)
+    return render(request, 'blog/author.html', {'author' : author})

@@ -11,6 +11,7 @@
     </nav>
     <div id="content">
         <br>
+        <h4>blog list</h4>
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
@@ -32,5 +33,22 @@
             <div class="col-3"><a href="/blog/create" class="btn create">create post</a></div>
             <div class="col-8"></div>
         </div>
+        <br>
+        <h4>Author list</h4>
+        <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                {% if authors %}
+                    <ul>
+                        {% for author in authors %}
+                        <a href="/blog/{{author.id}}/author/"><li>{{author.auth_name}}</li></a>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No authors are in the system</p>
+                {% endif %}
+                </div>
+                <div class="col-1"></div>
+            </div>
     </div>
 </body>
