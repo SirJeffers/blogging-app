@@ -25,3 +25,4 @@ the model of this app is:
 
 * lack of familiarity with django and github means I may have uploaded too many files, however I did keep the .pyc files out
 * I'm not a a good graphic designer, and so the site is functional, but not very pretty
+* I used github desktop app to create a local git repository, however I didn't push the project to github until it was complete
