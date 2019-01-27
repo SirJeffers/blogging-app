@@ -3,14 +3,25 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 
-<h1>EDIT A POST</h1>
-<br>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="title" placeholder="Blog Title" maxlength="100" value="{{post.blog_title}}"><br>
-    <input type="text" name="author" placeholder="Author" maxlength="30" value="{{post.blog_author}}"><br>
-    <textarea rows="5" columns="50" name="post" placeholder="Post text:" maxlength="1000">{{post.blog_post}}</textarea><br>
-    <button type="submit">update post</button>
-</form>
+<body>
+    <div id="content">
+        <h1>EDIT A POST</h1>
+        <br>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Blog Title" maxlength="100" value="{{post.blog_title}}"><br>
+            <select name="author">
+                <option value="">--------</option>
+                {% for auth in author %}
+                <option value="{{auth.pk}}">{{auth.auth_name}}</option>
+                {% endfor %}
+            </select>
+            <br>    <textarea rows="5" columns="50" name="post" placeholder="Post text:" maxlength="1000">{{post.blog_post}}</textarea><br>
+            <button type="submit">update post</button>
+        </form>
+    </div>
+</body>

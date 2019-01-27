@@ -4,11 +4,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 
 <body>
+    <nav>
+        <div id="nav">
+            
+        </div>
+    </nav>
     <div id="content">
         {% if blog_list %}
             <ul>
                 {% for post in blog_list %}
-                <li><a href="/blog/{{post.id}}/post/">{{post.blog_title}}</a></li>
+                <a href="/blog/{{post.id}}/post/"><li>{{post.blog_title}}</li></a>
                 {% endfor %}
             </ul>
         {% else %}

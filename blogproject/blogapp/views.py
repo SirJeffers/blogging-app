@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Post
+from .models import Post, Author
 # Create your views here.
 
 def index(request):
@@ -19,25 +19,27 @@ def createPost(request):
     if request.method == 'POST':
         post = Post()
         post.blog_title = request.POST['title']
-        post.blog_author = request.POST['author']
+        post.blog_author = Author.objects.get(pk=request.POST['author'])
         post.blog_post = request.POST['post']
         post.blog_date = datetime.datetime.now()
         post.save()
         num = Post.objects.latest('id')
         return HttpResponseRedirect(reverse('Post', args=(num.id,)))
     else:
-        return render(request, 'blog/create.html')
+        author = Author.objects.all()
+        return render(request, 'blog/create.html', {'author' : author})
 
 def editPost(request, post_id):
     if request.method == 'POST':
         post = Post()
         post.id = post_id
         post.blog_title = request.POST['title']
-        post.blog_author = request.POST['author']
+        post.blog_author = Author.objects.get(pk=request.POST['author'])
         post.blog_post = request.POST['post']
         post.blog_date = datetime.datetime.now()
         post.save()
         return HttpResponseRedirect(reverse('Post', args=(post.id,)))
     else:
         post = get_object_or_404(Post, pk=post_id)
-        return render(request, 'blog/edit.html', {'post' : post})
+        author = Author.objects.all()
+        return render(request, 'blog/edit.html', {'post' : post, 'author' : author})

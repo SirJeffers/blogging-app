@@ -3,8 +3,18 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 
-<p>{{post.blog_title}}</p>
-<p>{{post.blog_author}}  -  {{post.blog_date}}</p>
-<p>{{post.blog_post}}</p>
-<br>
-<a href="/blog/">click here for home page</a>
+<nav>
+    
+</nav>
+
+<body>
+    <div id="content">
+        <h1>{{post.blog_title}}</h1>
+        <h4>{{post.blog_author}}  -  {{post.blog_date}}</h4>
+        <p>{{post.blog_post}}</p>
+        <br>
+        <a href="/blog/">click here for home page</a>
+        <br>
+        <a href="/blog/{{post.pk}}/edit/">click here to edit the post</a>
+    </div>
+</body>
