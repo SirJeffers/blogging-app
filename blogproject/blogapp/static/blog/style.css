@@ -7,8 +7,14 @@ html, body {
 #content{
     height: 100%;
     background-color: #CDCDC0;
-    margin: 70px 20% 10px;
+    margin: 0 20% 10px;
 
+}
+
+#nav {
+    background-color: #DDBC95;
+    margin: 0;
+    padding: 5px;
 }
 
 ul{
@@ -30,7 +36,19 @@ a{
     text-decoration: none;
 }
 
+.create{
+    background-color: #DDBC95;
+    border-color: #B38867;
+    border-style: solid;
+}
+
+.fullwidth{
+    box-sizing: border-box;
+}
+
 /*
+    #626D71 - dark gray
+    #CDCDC0 - light gray
     #DDBC95 - light latte
     #B38867 - dark coffee 
 */

@@ -5,23 +5,40 @@
 
 
 <body>
+        <nav>
+            <div id="nav">
+                <h1>Jeffrey's blog app</h1>    
+            </div>
+        </nav>
     <div id="content">
         <h1>EDIT A POST</h1>
         <br>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="title" placeholder="Blog Title" maxlength="100" value="{{post.blog_title}}"><br>
+                    <select name="author">
+                        <option value="">--------</option>
+                        {% for auth in author %}
+                        <option value="{{auth.pk}}">{{auth.auth_name}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>    
+                    <textarea rows="5" columns="50" name="post" placeholder="Post text:" maxlength="1000">{{post.blog_post}}</textarea>
+                    <br>
+                    <button type="submit" class="btn create">update post</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
 
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="title" placeholder="Blog Title" maxlength="100" value="{{post.blog_title}}"><br>
-            <select name="author">
-                <option value="">--------</option>
-                {% for auth in author %}
-                <option value="{{auth.pk}}">{{auth.auth_name}}</option>
-                {% endfor %}
-            </select>
-            <br>    <textarea rows="5" columns="50" name="post" placeholder="Post text:" maxlength="1000">{{post.blog_post}}</textarea><br>
-            <button type="submit">update post</button>
-        </form>
+        <br>
+        <a href="/blog/">click here for home page</a>
+        <br>
+
     </div>
 </body>

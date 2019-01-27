@@ -6,20 +6,31 @@
 <body>
     <nav>
         <div id="nav">
-            
+            <h1>Jeffrey's blog app</h1>
         </div>
     </nav>
     <div id="content">
-        {% if blog_list %}
-            <ul>
-                {% for post in blog_list %}
-                <a href="/blog/{{post.id}}/post/"><li>{{post.blog_title}}</li></a>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No blog posts have been made</p>
-        {% endif %}
         <br>
-        <a href="/blog/create">create post</a>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+            {% if blog_list %}
+                <ul>
+                    {% for post in blog_list %}
+                    <a href="/blog/{{post.id}}/post/"><li>{{post.blog_title}}</li></a>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No blog posts have been made</p>
+            {% endif %}
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3"><a href="/blog/create" class="btn create">create post</a></div>
+            <div class="col-8"></div>
+        </div>
     </div>
 </body>
