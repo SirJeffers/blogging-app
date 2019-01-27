@@ -1,3 +1,12 @@
+html, body {
+    background-color: #626D71;
+    height: 100%;
+    margin: 0;
+}
+
 #content{
-    border: 70% auto;
+    height: 100%;
+    background-color: #CDCDC0;
+    margin: 100px 20% 10px;
+
 }
